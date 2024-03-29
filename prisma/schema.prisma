@@ -15,16 +15,16 @@ model Localisation {
   places         Json
   name           String
   characters     Character[]
+  chronologies   Chronology[]
 }
 
 model Character {
   id             String        @id @default(uuid()) @db.Uuid
-  name           String
   background     String
   picture        String
   race           String
   localisation   Localisation  @relation(fields: [localisationId], references: [id])
-  localisationId String
+  localisationId String        @db.Uuid
 }
 
 model Chronology {
@@ -32,7 +32,7 @@ model Chronology {
   events         Json
   plot           Boolean
   localisation   Localisation  @relation(fields: [localisationId], references: [id])
-  localisationId String
+  localisationId String        @db.Uuid
 }
 
 model User {
