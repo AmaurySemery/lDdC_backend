@@ -8,7 +8,7 @@ datasource db {
 }
 
 model Localisation {
-  id             String        @id @default(uuid()) @db.Uuid
+  id             Int           @id @default(autoincrement())
   world          String
   coordinates    Json
   description    String
@@ -19,24 +19,24 @@ model Localisation {
 }
 
 model Character {
-  id             String        @id @default(uuid()) @db.Uuid
+  id             Int           @id @default(autoincrement())
   background     String
   picture        String
   race           String
   localisation   Localisation  @relation(fields: [localisationId], references: [id])
-  localisationId String        @db.Uuid
+  localisationId Int        
 }
 
 model Chronology {
-  id             String        @id @default(uuid()) @db.Uuid
+  id             Int           @id @default(autoincrement())
   events         Json
   plot           Boolean
   localisation   Localisation  @relation(fields: [localisationId], references: [id])
-  localisationId String        @db.Uuid
+  localisationId Int        
 }
 
 model User {
-  id             String        @id @default(uuid()) @db.Uuid
+  id             Int           @id @default(autoincrement())
   name           String        @unique
   role           String
   password       String

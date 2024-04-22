@@ -1,6 +1,6 @@
 -- CreateTable
 CREATE TABLE "Localisation" (
-    "id" UUID NOT NULL,
+    "id" SERIAL NOT NULL,
     "world" TEXT NOT NULL,
     "coordinates" JSONB NOT NULL,
     "description" TEXT NOT NULL,
@@ -12,29 +12,28 @@ CREATE TABLE "Localisation" (
 
 -- CreateTable
 CREATE TABLE "Character" (
-    "id" UUID NOT NULL,
-    "name" TEXT NOT NULL,
+    "id" SERIAL NOT NULL,
     "background" TEXT NOT NULL,
     "picture" TEXT NOT NULL,
     "race" TEXT NOT NULL,
-    "localisationId" TEXT NOT NULL,
+    "localisationId" INTEGER NOT NULL,
 
     CONSTRAINT "Character_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
 CREATE TABLE "Chronology" (
-    "id" UUID NOT NULL,
+    "id" SERIAL NOT NULL,
     "events" JSONB NOT NULL,
     "plot" BOOLEAN NOT NULL,
-    "localisationId" TEXT NOT NULL,
+    "localisationId" INTEGER NOT NULL,
 
     CONSTRAINT "Chronology_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
 CREATE TABLE "User" (
-    "id" UUID NOT NULL,
+    "id" SERIAL NOT NULL,
     "name" TEXT NOT NULL,
     "role" TEXT NOT NULL,
     "password" TEXT NOT NULL,
